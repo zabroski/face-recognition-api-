@@ -2,6 +2,7 @@ const express = require('express');
 const port = 3000;
 const bodyParser = require('body-parser');
 let cors = require('cors');
+const bcrypt = require('bcrypt-nodejs')
 
 const app = express();
 app.use(bodyParser.json())
@@ -44,6 +45,13 @@ app.get('/', (req, res) => {
 
 
 app.post('/signin', (req, res) => {
+    bcrypt.compare("grady", '$2a$10$YhQSLOYFECzPRepFO/5j7O.ESEQxNstE/NR2NjidVZX0sxq/UCGNm', function(err, res) {
+        console.log('first guest', res)
+    });
+    bcrypt.compare("veggies", '$2a$10$YhQSLOYFECzPRepFO/5j7O.ESEQxNstE/NR2NjidVZX0sxq/UCGNm', function(err, res) {
+        console.log('second guest', res)
+    });
+
     if(req.body.email === database.users[0].email &&
          req.body.password === database.users[0].password) {
             res.json("succes") 
@@ -98,6 +106,8 @@ app.post('/image', (req, res) => {
 
     }
 })
+
+
 
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
