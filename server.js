@@ -54,7 +54,6 @@ app.post('/register', (req, res) => {
         id: '123',
         name: name,
         email: email,
-        password: password,
         entries: 0,
         joined: new Date()
 
@@ -105,11 +104,11 @@ app.post('/image', (req, res) => {
 
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// app.listen(port, () => console.log(`Example app listening on port ${port}!`))
 
-// app.listen(${port}, () => {
-//     console.log(`app is running on port ${port}`)
-// })
+app.listen(3000, () => {
+    console.log(`app is running on port ${port}`)
+})
 
 
 /*
