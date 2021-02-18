@@ -41,7 +41,7 @@ app.post('/signin', (req, res) => {
            res.status(400).json('wrong credentials')
        }
     })
-            .catch(err => res.status(400).json('Wrong credentials'))
+    .catch(err => res.status(400).json('Wrong credentials'))
 })
 
 
@@ -59,7 +59,7 @@ app.post('/register', (req, res) => {
             return trx('users')
             .returning('*')
             .insert({
-                email: loginEmail,
+                email: loginEmail[0],
                 name: name,
                 joined: new Date
             })
@@ -76,8 +76,7 @@ app.post('/register', (req, res) => {
 
 app.get('/profile/:id', (req, res) => {
     const {id} = req.params;
-    let found = false;
-    db.select('*').from('users').where({id:id})
+    db.select('*').from('users').where({id})
     .then(user => {
         if(user.length) {
             res.json(user[0])
