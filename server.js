@@ -1,6 +1,7 @@
 
+
 const express = require('express');
-// const port = 3000;
+const port = 3000;
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const bcrypt = require('bcrypt-nodejs');
@@ -21,7 +22,9 @@ const db = Knex({
     }
   });
 
-app.get('/', (req, res) => {res.send('it is working')})
+app.get('/', (req, res) => {
+    res.send(database.users)
+})
 
 
 app.post('/signin', (req, res) => {
@@ -100,10 +103,14 @@ app.put('/image', (req, res) => {
 })
 
 
+// app.listen( process.env.PORTR || 3000, () => {
+//     console.log(`app is running on port ${process.env.PORT}`)
+// })
 
-app.listen(process.env.PORT || 3000, () => {
-    console.log(`app is running on port ${process.env.PORT}`);
-}) 
+
+app.listen(3000, () => {
+    console.log(`app is running on port ${port}`)
+})
 
 
 /*
