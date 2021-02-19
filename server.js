@@ -21,9 +21,7 @@ const db = Knex({
     }
   });
 
-app.get('/', (req, res) => {
-    res.send(database.users)
-})
+app.get('/', (req, res) => {res.send('it is working')})
 
 
 app.post('/signin', (req, res) => {
